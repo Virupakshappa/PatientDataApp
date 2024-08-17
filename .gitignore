@@ -1,0 +1,81 @@
+# Ignore node_modules and other dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore build output
+build/
+dist/
+
+# Ignore .env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore lock files
+package-lock.json
+yarn.lock
+
+# Ignore coverage reports
+coverage/
+
+# Ignore IDE/editor files
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+*.swn
+
+# Ignore log files
+*.log
+
+# Ignore Mac system files
+.DS_Store
+.DS_Store?
+
+# Ignore .NET build results
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.rsuser
+*.suo
+
+# Ignore Rider IDE files
+.idea/
+*.sln.iml
+.idea/*.xml
+.idea/modules.xml
+.idea/*.iml
+.idea/workspace.xml
+.idea/.idea.icls
+.idea/vcs.xml
+
+# Ignore Visual Studio Code settings
+.vscode/
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+
+# Ignore Recycle Bin used on Windows
+$RECYCLE.BIN/
+
+# Ignore VS Code workspace storage
+.vscode-test/
+
+# Ignore .NET Core file containing user secrets
+secrets.json
+
+# Ignore .NET Core project files
+project.lock.json
+project.fragment.lock.json
+
+# Ignore application configuration files
+appsettings.json
+appsettings.*.json
