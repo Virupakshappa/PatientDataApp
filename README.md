@@ -9,7 +9,6 @@ This project is a real-time patient data monitoring application that streams pat
 - [Getting Started](#getting-started)
 - [Running the Backend (C#)](#running-the-backend-c)
 - [Running the Frontend (React)](#running-the-frontend-react)
-- [License](#license)
 
 ## Features
 
@@ -37,6 +36,6 @@ This project is a real-time patient data monitoring application that streams pat
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/patient-data-app.git
+   git clone https://github.com/Virupakshappa/patient-data-app.git
    cd patient-data-app
    ```
