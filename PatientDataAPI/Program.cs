@@ -7,7 +7,23 @@ builder.Services.AddSwaggerGen();
 // Add services to the container
 builder.Services.AddControllers(); // Add support for controllers
 
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod()
+                   .AllowCredentials(); // Allow credentials if needed
+        });
+});
+
 var app = builder.Build();
+
+// Use CORS middleware
+app.UseCors();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
