@@ -25,10 +25,7 @@ const PatientData = () => {
             <th>Patient ID</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Admitted Date</th>
-            <th>Discharge Date</th>
             <th>Heart Rate</th>
-            <th>Data Stored DateTime</th>
           </tr>
         </thead>
         <tbody>
@@ -37,10 +34,7 @@ const PatientData = () => {
               <td>{patient.PatientId}</td>
               <td>{patient.FirstName}</td>
               <td>{patient.LastName}</td>
-              <td>{new Date(patient.AdmittedDate).toLocaleString()}</td>
-              <td>{patient.DischargeDate ? new Date(patient.DischargeDate).toLocaleString() : 'N/A'}</td>
               <td>{patient.HeartRate}</td>
-              <td>{new Date(patient.DataStoredDateTime).toLocaleString()}</td>
             </tr>
           ))}
         </tbody>

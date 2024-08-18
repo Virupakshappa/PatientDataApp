@@ -20,6 +20,10 @@ builder.Services.AddCors(options =>
         });
 });
 
+// // Register DbContext
+// builder.Services.AddDbContext<PatientDataContext>(options =>
+//     options.UseNpgsql(builder.Configuration.GetConnectionString("YugaConnection")));
+
 var app = builder.Build();
 
 // Use CORS middleware
