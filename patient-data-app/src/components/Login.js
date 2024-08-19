@@ -1,5 +1,15 @@
 import React from 'react';
 import axios from 'axios';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Grid from '@mui/material/Grid';
+import Avatar from '@mui/material/Avatar';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Paper from '@mui/material/Paper';
 
 function Login({ setToken }) {
     const handleSubmit = async (event) => {
@@ -21,11 +31,57 @@ function Login({ setToken }) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            Username<input type="text" name="username" /><br/>
-            Password<input type="password" name="password" /><br/>
-            <button type="submit">Login</button>
-        </form>
+        <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            <Paper elevation={6} sx={{ padding: 4, mt: 8 }}>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Sign in
+                    </Typography>
+                    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="username"
+                            label="Username"
+                            name="username"
+                            autoComplete="username"
+                            autoFocus
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2 }}
+                        >
+                            Sign In
+                        </Button>
+                    </Box>
+                </Box>
+            </Paper>
+        </Container>
     );
 }
 

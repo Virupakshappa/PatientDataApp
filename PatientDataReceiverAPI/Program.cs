@@ -10,7 +10,23 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<PatientDataContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("YugabyteDBConnection")));
 
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod()
+                   .AllowCredentials(); // Allow credentials if needed
+        });
+});
+
 var app = builder.Build();
+
+// Use CORS middleware
+app.UseCors();
 
 if (app.Environment.IsDevelopment())
 {
