@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography';
 import HeartRateChart from './HeartRateChart';
 
 function PatientCard({ patient }) {
+  console.log("Rendering patient:", patient); // Log the patient data
+
   const [heartRateData, setHeartRateData] = useState([patient.HeartRate]);
 
   useEffect(() => {

@@ -1,40 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import Layout from './components/Layout';
-import PatientCard from './components/PatientCard';
-
+import React, { useState } from 'react';
+import Login from './components/Login';
+import MainApp from './components/MainApp';
 
 function App() {
-  const [patients, setPatients] = useState([]);
+  const [token, setToken] = useState(localStorage.getItem('token') || '');
 
-  useEffect(() => {
-    const eventSource = new EventSource('http://localhost:5216/api/PatientData/stream');
+  const setTokenAndSave = (token) => {
+    localStorage.setItem('token', token);
+    setToken(token);
+  };
 
-    eventSource.onmessage = function (event) {
-      const newPatientData = JSON.parse(event.data);
+  if (!token) {
+    return <Login setToken={setTokenAndSave} />;
+  }
 
-      console.log("Received patient data:", newPatientData);
-
-      // Assuming newPatientData is an array of patient objects
-      setPatients(newPatientData);
-    };
-
-    eventSource.onerror = function (err) {
-      console.error('EventSource failed:', err);
-      eventSource.close();
-    };
-
-    return () => {
-      eventSource.close();
-    };
-  }, []);
-
-  return (
-    <Layout>
-      {patients.map((patient) => (
-        <PatientCard key={patient.PatientId} patient={patient} />
-      ))}
-    </Layout>
-  );
+  return <MainApp />;
 }
 
 export default App;
