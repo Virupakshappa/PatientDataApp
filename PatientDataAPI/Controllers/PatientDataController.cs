@@ -25,9 +25,9 @@ public class PatientDataController : ControllerBase
             await Response.Body.FlushAsync();
 
             // Simulate real-time data change
-            _patients[0].HeartRate = new Random().Next(60, 100);
+            _patients[0].HeartRate = new Random().Next(50, 110);
             // _patients[0].DataStoredDateTime = DateTime.Now;
-            _patients[1].HeartRate = new Random().Next(60, 100);
+            _patients[1].HeartRate = new Random().Next(50, 110);
             // _patients[1].DataStoredDateTime = DateTime.Now;
 
             await Task.Delay(5000); // Send data every 5 seconds
