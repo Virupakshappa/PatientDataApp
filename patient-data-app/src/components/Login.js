@@ -10,8 +10,11 @@ import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Paper from '@mui/material/Paper';
+import { useNavigate } from 'react-router-dom';
 
 function Login({ setToken }) {
+    const navigate = useNavigate();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const { username, password } = event.target.elements;
@@ -25,6 +28,9 @@ function Login({ setToken }) {
             const token = response.data.token;
             localStorage.setItem('token', token);
             setToken(token);
+
+            // Navigate to MainApp after successful login
+            navigate('/');
         } catch (error) {
             console.error('Login error:', error);
         }

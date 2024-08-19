@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import MainApp from './components/MainApp';
 
@@ -10,11 +11,20 @@ function App() {
     setToken(token);
   };
 
-  if (!token) {
-    return <Login setToken={setTokenAndSave} />;
-  }
-
-  return <MainApp />;
+  return (
+    <Router>
+      <Routes>
+        <Route 
+          path="/login" 
+          element={<Login setToken={setTokenAndSave} />} 
+        />
+        <Route 
+          path="/" 
+          element={token ? <MainApp /> : <Navigate to="/login" />} 
+        />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

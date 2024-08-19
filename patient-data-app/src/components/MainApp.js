@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { jwtDecode } from 'jwt-decode';
 import Layout from './Layout';
 import PatientCard from './PatientCard';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import CircularProgress from '@mui/material/CircularProgress';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 function MainApp() {
     const [patients, setPatients] = useState([]);
@@ -13,10 +16,26 @@ function MainApp() {
     const [notification, setNotification] = useState({ open: false, message: '' }); // Snackbar notification
     const token = localStorage.getItem('token'); // Retrieve token from localStorage
     const startTimeoutRef = useRef(null); // Ref to store the timeout ID
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         if (!token) {
             console.error("No token found, redirecting to login.");
+            navigate('/login'); // Ensure redirection if no token
+            return;
+        }
+
+        const decodedToken = jwtDecode(token);
+        const currentTime = Date.now() / 1000;
+
+        if (decodedToken.exp < currentTime) {
+            // Token expired
+            localStorage.removeItem('token');
+            setNotification({ open: true, message: 'Session expired. Redirecting to login.' });
+            setTimeout(() => {
+                navigate('/login');
+            }, 3000);
             return;
         }
 
@@ -33,9 +52,9 @@ function MainApp() {
         };
 
         return () => {
-            eventSource.close();
+            eventSource.close(); // Clean up the event source on component unmount
         };
-    }, [token]);
+    }, [token, navigate]);
 
     const handleStartStoring = async () => {
         setLoading(true);
@@ -60,12 +79,6 @@ function MainApp() {
 
             hasResponded = true; // Mark that a response was received
             clearTimeout(startTimeoutRef.current); // Clear the timeout since we got a response
-
-            // if (response.status === 204 || response.status === 200) {
-            //     console.log('Data storing started:', response.data);
-            //     setIsStoringData(true);
-            //     setNotification({ open: true, message: 'Data is being stored to the database' });
-            // } else
             if(response.error)
              {
                 console.error('Unexpected response status:', response.status);
