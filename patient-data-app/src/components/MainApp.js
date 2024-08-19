@@ -18,7 +18,6 @@ function MainApp() {
     const startTimeoutRef = useRef(null); // Ref to store the timeout ID
     const navigate = useNavigate();
 
-
     useEffect(() => {
         if (!token) {
             console.error("No token found, redirecting to login.");
