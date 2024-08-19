@@ -1,6 +1,6 @@
 # Patient Data Monitoring Application
 
-This project is a real-time patient data monitoring application that streams patient information from a C# backend to a React frontend using Server-Sent Events (SSE). The patient data includes details such as patient ID, first name, last name, admitted date, discharge date, heart rate, and the date and time when the data was stored.
+This project is a real-time patient data monitoring application that streams patient information from a C# backend to a React frontend using Server-Sent Events (SSE). The application displays patient details such as patient ID, first name, last name, heart rate, and more. Additionally, it visualizes the heart rate data in real-time graphs, enhancing the ability to monitor patient health effectively.
 
 ## Table of Contents
 
@@ -12,15 +12,17 @@ This project is a real-time patient data monitoring application that streams pat
 
 ## Features
 
-- Real-time streaming of patient data using Server-Sent Events (SSE).
-- Display of patient data in a user-friendly table format.
-- Backend implemented with ASP.NET Core.
-- Frontend implemented with React.
+- **Real-Time Streaming**: Streams patient data in real-time using Server-Sent Events (SSE).
+- **Interactive UI**: Displays patient data in a user-friendly card format with dynamic content.
+- **Real-Time Graphs**: Visualizes heart rate data for each patient in real-time, using responsive and interactive graphs.
+- **Component-Based Architecture**: Both frontend and backend are modular and easy to maintain.
+- **Scalable Backend**: Built with ASP.NET Core, providing a scalable and robust API.
+- **Responsive Frontend**: Implemented with React and Material-UI, ensuring a responsive and customizable user interface.
 
 ## Technologies Used
 
 - **Backend**: C# with ASP.NET Core
-- **Frontend**: React
+- **Frontend**: React, Material-UI, react-chartjs-2, Chart.js
 - **Database**: YugabyteDB (Optional for storing real-time data)
 - **Communication**: Server-Sent Events (SSE)
 
@@ -28,9 +30,9 @@ This project is a real-time patient data monitoring application that streams pat
 
 ### Prerequisites
 
-- **.NET SDK**: To run the C# backend.
-- **Node.js and npm**: To run the React frontend.
-- **YugabyteDB**: (Optional) For storing patient data.
+- **.NET SDK**: Required to run the C# backend.
+- **Node.js and npm**: Required to run the React frontend.
+- **YugabyteDB**: (Optional) Required if you plan to store patient data.
 
 ### Installation
 
